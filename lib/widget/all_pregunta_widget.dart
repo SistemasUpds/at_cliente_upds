@@ -5,6 +5,7 @@ import 'package:at_cliente_upds/screen/video_intro_screen.dart';
 import 'package:at_cliente_upds/theme/colors.dart';
 import 'package:at_cliente_upds/theme/style_text.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class AllPreguntaWidget extends StatefulWidget {
   final Categoria categoria;
@@ -220,10 +221,13 @@ class _AllPreguntaWidgetState extends State<AllPreguntaWidget> {
                                       Radius.circular(30)),
                                   onTap: () {
                                     dbHelper.addRespuesta(Respuesta(
-                                        pregunta1: pregunta1!,
-                                        pregunta2: pregunta2!,
-                                        comentario: comentario!,
-                                        idCategoira: widget.categoria.id));
+                                      pregunta1: pregunta1!,
+                                      pregunta2: pregunta2!,
+                                      comentario: comentario!,
+                                      idCategoira: widget.categoria.id,
+                                      fecha: DateFormat.yMMMd()
+                                          .format(DateTime.now()),
+                                    ));
                                     Navigator.of(context).pushAndRemoveUntil(
                                         MaterialPageRoute<void>(
                                             builder: (BuildContext context) {

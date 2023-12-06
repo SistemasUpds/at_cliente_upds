@@ -115,24 +115,24 @@ class _ReporteCategScreenState extends State<ReporteCategScreen> {
                                                     workbook.worksheets
                                                         .addWithName(
                                                             'Respuestas');
-                                                /*var i = 0;
+                                                var i = 0;
                                                 final col = [
                                                   'A',
                                                   'B',
                                                   'C',
                                                   'D'
-                                                ];*/
+                                                ];
                                                 Intl.defaultLocale = 'es';
                                                 excel.getRangeByName('D1').setText(
                                                     'Fecha: ${DateFormat.yMMMMEEEEd().format(DateTime.now())}');
                                                 excel.getRangeByName('B3').setText(
                                                     'REPORTE DE LAS RESPUESTAS');
-                                                /*Text(
+                                                Text(
                                                     '${preguntas.map((e) => excel.getRangeByName('${col[i++]}5').setText(e.pregunta)).toList()}',
                                                     style: const TextStyle(
                                                       fontWeight:
                                                           FontWeight.bold,
-                                                    ));*/
+                                                    ));
                                                 var rows = 6;
                                                 rows = 6;
                                                 snapshot.data!
@@ -156,35 +156,26 @@ class _ReporteCategScreenState extends State<ReporteCategScreen> {
                                                         .setText(e.comentario))
                                                     .toList();
                                                 rows = 6;
-                                                /*snapshot.data!
+                                                snapshot.data!
                                                     .map((e) => excel
                                                         .getRangeByName(
                                                             'D${rows++}')
                                                         .setText(e.fecha))
-                                                    .toList();*/
+                                                    .toList();
+                                                rows = 6;
                                                 List<int> sheets =
                                                     workbook.saveAsStream();
                                                 workbook.dispose();
-                                                //Uint8List data = Uint8List.fromList(sheets);
-                                                //MimeType type = MimeType.other;
-                                                try {
-                                                  String path = await FileSaver
-                                                      .instance
-                                                      .saveFile(
-                                                    name: nameFile,
-                                                    bytes: Uint8List.fromList(
-                                                        sheets),
-                                                    ext: 'xlsx',
-                                                    filePath:
-                                                        "/storage/emulated/0/Documents",
-                                                    mimeType:
-                                                        MimeType.microsoftExcel,
-                                                  );
-                                                  log(path);
-                                                } catch (e) {
-                                                  print(
-                                                      "Error al guardar el archivo: $e");
-                                                }
+                                                Uint8List data =
+                                                    Uint8List.fromList(sheets);
+                                                MimeType type = MimeType.other;
+                                                await FileSaver.instance.saveAs(
+                                                  name: nameFile,
+                                                  bytes: data,
+                                                  ext: "xlsx",
+                                                  mimeType: type,
+                                                );
+                                                //log(path);
                                               },
                                               child: Container(
                                                 padding: const EdgeInsets.only(

@@ -95,7 +95,7 @@ final categorias = <Categoria>[
   Categoria(
     id: 16,
     preguntas: preguntasBLI,
-    catNombre: 'biblioteca',
+    catNombre: 'Biblioteca',
     icon: 'biblioteca',
   ),
 ];

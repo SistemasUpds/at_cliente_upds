@@ -1,5 +1,6 @@
 import 'package:at_cliente_upds/theme/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:video_player/video_player.dart';
 import 'home_screen.dart';
 import 'package:lottie/lottie.dart';
@@ -48,6 +49,7 @@ class _VideoIntroScreenState extends State<VideoIntroScreen> {
 
   @override
   Widget build(BuildContext context) {
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: []);
     return Scaffold(
       body: Container(
         color: updsFondos,

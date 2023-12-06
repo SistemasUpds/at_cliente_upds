@@ -33,7 +33,7 @@ class DBHelper {
       pregunta2 TEXT,
       comentario TEXT NOT NULL,
       idCategoira INTEGER,
-      fecha TEXT DEFAULT CURRENT_TIMESTAMP,
+      fecha TEXT,
       ci TEXT
     )''');
   }
