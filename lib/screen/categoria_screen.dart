@@ -18,7 +18,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
   void initState() {
     super.initState();
     // Iniciar un temporizador de 1 minuto
-    Future.delayed(const Duration(seconds: 30), () {
+    Future.delayed(const Duration(minutes: 1), () {
       // Redirigir a la página principal después de 1 minuto
       Navigator.of(context).pushAndRemoveUntil(
           MaterialPageRoute<void>(builder: (BuildContext context) {

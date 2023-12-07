@@ -6,6 +6,7 @@ import 'package:at_cliente_upds/theme/colors.dart';
 import 'package:at_cliente_upds/theme/style_text.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:flutter_emoji_feedback/flutter_emoji_feedback.dart';
 
 class AllPreguntaWidget extends StatefulWidget {
   final Categoria categoria;
@@ -28,7 +29,7 @@ class _AllPreguntaWidgetState extends State<AllPreguntaWidget> {
   int preguntaActual = 0;
 
   String? pregunta1;
-  String? pregunta2;
+  int? pregunta2;
   String? comentario = 'Sin comentarios';
 
   @override
@@ -85,8 +86,6 @@ class _AllPreguntaWidgetState extends State<AllPreguntaWidget> {
                             setState(() {
                               if (preguntaActual == 0) {
                                 pregunta1 = value;
-                              } else if (preguntaActual == 1) {
-                                pregunta2 = value;
                               }
                               seleccionada = true;
                               respuestasSeleccionada[i] = value;
@@ -105,7 +104,7 @@ class _AllPreguntaWidgetState extends State<AllPreguntaWidget> {
                     ),
                   ),
                 );
-              } else {
+              } else if (preguntaData.tipo == 'abierto') {
                 preguntaWidget = Column(
                   children: [
                     TextField(
@@ -121,6 +120,18 @@ class _AllPreguntaWidgetState extends State<AllPreguntaWidget> {
                       },
                     ),
                   ],
+                );
+              } else {
+                preguntaWidget = EmojiFeedback(
+                  animDuration: const Duration(milliseconds: 300),
+                  curve: Curves.bounceIn,
+                  inactiveElementScale: .5,
+                  showLabel: false,
+                  onChanged: (value) {
+                    setState(() {
+                      pregunta2 = value;
+                    });
+                  },
                 );
               }
               return Center(
@@ -149,7 +160,7 @@ class _AllPreguntaWidgetState extends State<AllPreguntaWidget> {
               setState(() {
                 esUltimaPregunta =
                     (page == widget.categoria.preguntas.length - 1);
-                if (page == 3) {
+                if (page == 2 || page == 1) {
                   mostrarSiguiente = true;
                 }
               });
@@ -222,7 +233,7 @@ class _AllPreguntaWidgetState extends State<AllPreguntaWidget> {
                                   onTap: () {
                                     dbHelper.addRespuesta(Respuesta(
                                       pregunta1: pregunta1!,
-                                      pregunta2: pregunta2!,
+                                      pregunta2: '$pregunta2',
                                       comentario: comentario!,
                                       idCategoira: widget.categoria.id,
                                       fecha: DateFormat.yMMMd()

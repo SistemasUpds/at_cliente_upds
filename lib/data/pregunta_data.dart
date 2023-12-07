@@ -1,27 +1,20 @@
 import 'package:at_cliente_upds/model/pregunta.dart';
 
 const tipoSeleccion = 'seleccion';
+const tipoCarita = 'caritas';
 const tipoAbierto = 'abierto';
 
 final preguntas = <PreguntasGeneral>[
   PreguntasGeneral(pregunta: '¿Que trámite y/o servicio realizó en UPDS?'),
-  PreguntasGeneral(
-      pregunta:
-          'Califique la calidad de atención que recibió en su trámite y/o servicio recibido.'),
-  PreguntasGeneral(pregunta: '¿Quiere agregar algún comentario?'),
+  PreguntasGeneral(pregunta: 'Califique la calidad de atención.'),
+  PreguntasGeneral(pregunta: 'Comentario'),
 ];
 
 final preguntascomunes = <Pregunta>[
   Pregunta(
-    pregunta:
-        'Califique la calidad de atención que recibió en su trámite y/o servicio recibido.',
-    tipo: tipoSeleccion,
-    opciones: [
-      Opcion('Excelente.'),
-      Opcion('Buena.'),
-      Opcion('Aceptable.'),
-      Opcion('Necesita mejorar.'),
-    ],
+    pregunta: 'Califique la calidad de atención.',
+    tipo: tipoCarita,
+    opciones: [],
   ),
   Pregunta(
     pregunta: '¿Quiere agregar algún comentario?',

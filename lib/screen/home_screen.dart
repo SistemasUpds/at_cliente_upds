@@ -142,7 +142,7 @@ class HomeScreen extends StatelessWidget {
               children: [
                 StyleTextot(
                   colors: updsletras,
-                  text: 'SATISFACCIÓN DEL CLIENTE',
+                  text: 'SATISFACCION DEL CLIENTE',
                   fontweight: FontWeight.bold,
                   size: 30,
                 )
